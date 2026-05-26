@@ -1,66 +1,45 @@
 # Datos del estudiante
-print('\nEstudiante: Brayan Stiven Casas Cardenas \nGrupo: 213022_807 \nPrograma:Ingenieria en Sistemas \nCodigo fuente: autoria propia')
-# SISTEMA DE AUDITORÍA DE INVENTARIO
+print('\nEstudiante: Brayan Stiven Casas Cardenas')
+print('Grupo: 213022_807')
+print('Programa: Ingenieria en Sistemas')
+print('Codigo fuente: autoria propia\n')
 
-# Matriz de artículos
-# [Código, Nombre, Stock Actual, Stock Mínimo]
+# SISTEMA DE AUDITORIA DE INVENTARIO
+# Inventario de la tienda ShopTechnology
 
-inventario = []
+# [Codigo, Nombre, Stock actual, Stock minimo]
 
-# FUNCIÓN PARA CALCULAR REABASTECIMIENTO
+inventario = [
+    [101, "Teclado", 25, 45],
+    [102, "Mouse", 15, 65],
+    [103, "Monitor", 3, 10],
+    [104, "Impresora", 5, 10],
+    [105, "USB", 7, 25]]
 
+# Funcion para calcular cuanto producto hace falta
 def calcular_pedido(stock_actual, stock_minimo):
-    """
-    Calcula la cantidad exacta que debe pedirse.
-    """
     if stock_actual < stock_minimo:
-        return stock_minimo - stock_actual
+        pedido = stock_minimo - stock_actual
+        return pedido
     else:
         return 0
-    
 
-# REGISTRO DE ARTÍCULOS
-
-cantidad_articulos = int(
-    input("¿Cuántos artículos desea registrar?: ")
-)
-
-for i in range(cantidad_articulos):
-
-    print(f"\n--- Registro del artículo #{i + 1} ---")
-
-    codigo = int(input("Ingrese el código: "))
-    nombre = input("Ingrese el nombre del artículo: ")
-    stock_actual = int(input("Ingrese el stock actual: "))
-    stock_minimo = int(input("Ingrese el stock mínimo requerido: "))
-
-    inventario.append([
-        codigo,
-        nombre,
-        stock_actual,
-        stock_minimo
-    ])
-
-#REPORTE DE PEDIDOS
-
-print("\n========================================")
-print("   REPORTE DE REABASTECIMIENTO")
-print("========================================")
+# Reporte final
+print("REPORTE DE INVENTARIO")
 
 for articulo in inventario:
-
     codigo = articulo[0]
     nombre = articulo[1]
     stock_actual = articulo[2]
     stock_minimo = articulo[3]
-
     cantidad_pedir = calcular_pedido(
         stock_actual,
         stock_minimo)
-    print(f"\nArtículo: {nombre}")
-    print(f"Código: {codigo}")
-    print(f"Stock actual: {stock_actual}")
-    print(f"Stock mínimo: {stock_minimo}")
-    print(f"Cantidad a pedir: {cantidad_pedir}")
 
-print("\nAuditoría finalizada.")
+    print("\nArticulo:", nombre)
+    print("Codigo:", codigo)
+    print("Stock actual:", stock_actual)
+    print("Stock minimo:", stock_minimo)
+    print("Cantidad a pedir:", cantidad_pedir)
+
+print("\nProceso terminado.")
